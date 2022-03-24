@@ -24,7 +24,8 @@
     "space-before-function-paren": "off",
     "react/prop-types": "off",
     "react/jsx-filename-extension": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "import/prefer-default-export": "off"
   },
   "settings": {
     "import/resolver": {
