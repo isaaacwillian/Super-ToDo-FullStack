@@ -1,12 +1,18 @@
 import React from "react";
-import { Container } from "./style";
-import todoIcon from "../../assets/todo-login.jpg";
+import { Form } from "@unform/web";
+import { Container, Background, Content } from "./style";
 
 function Login() {
   return (
-    <div>
-      <Container alt="aaa" src={todoIcon} />
-    </div>
+    <Container>
+      <Content>
+        <form action="">
+          <input type="text" />
+          <button type="submit">click</button>
+        </form>
+      </Content>
+      <Background />
+    </Container>
   );
 }
 
