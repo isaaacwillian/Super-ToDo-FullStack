@@ -8,10 +8,14 @@ export default createGlobalStyle`
     outline: 0;
   }
   body {
-    background: white;
+    background: #E5E5E5;
     color: black;
     -webkit-font-smoothing: antialiased;
     transition: all 1s;
+  }
+  body, input, button {
+    font-family: 'Roboto Slab', serif;
+    font-size: 14px;
   }
   button{
     cursor: pointer;

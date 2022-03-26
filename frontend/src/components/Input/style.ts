@@ -1,6 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.input`
-  width: 200px;
-  height: 30px;
+  width: 230px;
+  height: 35px;
+  border: none;
+  border-radius: 8px;
+  &::placeholder {
+    position: absolute;
+    left: 40px;
+    top: 9px;
+  }
 `;
