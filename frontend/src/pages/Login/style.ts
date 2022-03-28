@@ -30,10 +30,11 @@ export const Content = styled.div`
   h1 {
     text-align: center;
     margin-bottom: 16px;
+    color: ${(props) => props.theme.colors.text};
   }
 
   a {
-    color: #4c3636;
+    color: ${(props) => props.theme.colors.primary};
     text-decoration: none;
     transition: all 0.5s;
 

@@ -8,10 +8,10 @@ export default createGlobalStyle`
     outline: 0;
   }
   body {
-    background: #E5E5E5;
-    color: black;
+    background: ${(props) => props.theme.colors.background};
+    color: ${(props) => props.theme.colors.text};
     -webkit-font-smoothing: antialiased;
-    transition: all 1s;
+    transition: all 0.5s;
   }
   body, input, button {
     font-family: 'Roboto Slab', serif;

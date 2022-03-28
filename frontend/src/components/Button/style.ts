@@ -5,6 +5,7 @@ export const Container = styled.button`
   height: 35px;
   border-radius: 10px;
   border: none;
-  background-color: #4c3636;
-  color: white;
+  transition: all 0.5s;
+  background-color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.secondary};
 `;
