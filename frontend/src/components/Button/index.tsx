@@ -3,6 +3,6 @@ import { Container } from "./style";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
-export default function Button({ type, children }: ButtonProps) {
-  return <Container type={type}>{children}</Container>;
+export default function Button({ children, ...rest }: ButtonProps) {
+  return <Container {...rest}>{children}</Container>;
 }

@@ -14,42 +14,42 @@ export const Content = styled.div`
   gap: 20px;
   width: 70%;
   min-width: 500px;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+
+  #logo {
+    margin-right: 10px;
+  }
+
   form {
     display: flex;
     flex-direction: column;
     gap: 5px;
   }
-  #conta {
-    position: absolute;
-    bottom: 100px;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 16px;
   }
-  div {
-    display: flex;
-    align-items: center;
-    #todo {
-      display: flex;
-      flex-direction: column;
+
+  a {
+    color: #4c3636;
+    text-decoration: none;
+    transition: all 0.5s;
+
+    svg {
+      margin-right: 10px;
     }
-    .line {
-      width: 30vw;
-      height: 2px;
-      background-color: black;
-    }
-    img {
-      width: 100px;
-    }
-    p {
-      font-family: "Michroma", sans-serif;
-      font-size: 36px;
+
+    &:hover {
+      color: #4c3636a4;
     }
   }
 `;
 
 export const Background = styled.div`
   flex: 1;
-  min-width: 500px;
+  min-width: 600px;
   background: url(${todoIcon}) no-repeat center;
   background-size: cover;
 `;
