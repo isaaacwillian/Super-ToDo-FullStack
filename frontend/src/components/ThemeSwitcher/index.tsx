@@ -22,7 +22,7 @@ export default function ThemeSwitcher({ toggleTheme }: Props) {
         width={40}
         height={15}
         handleDiameter={20}
-        onColor="#00012b  "
+        onColor="#00012b"
         offColor="#fff"
         offHandleColor="#e1e1e1"
         onHandleColor="#000"

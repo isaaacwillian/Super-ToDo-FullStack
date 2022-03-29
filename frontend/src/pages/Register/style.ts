@@ -10,10 +10,10 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
-const appearFromRight = keyframes`
+const appearFromLeft = keyframes`
   from {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateX(50px);
   }
   to {
     opacity: 1;
@@ -28,7 +28,7 @@ export const Content = styled.div`
   width: 60%;
   justify-content: space-evenly;
   align-items: center;
-  animation: ${appearFromRight} 1s;
+  animation: ${appearFromLeft} 1s;
   @media (max-width: 900px) {
     width: 100%;
   }
@@ -38,7 +38,6 @@ export const Content = styled.div`
   }
 
   form {
-    width: 230px;
     h1 {
       text-align: center;
       margin-bottom: 16px;
@@ -72,8 +71,6 @@ export const Background = styled.div`
   flex: 1;
   background: url(${todoIcon}) no-repeat center;
   background-size: cover;
-  filter: ${(props) =>
-    props.theme.title === "dark" ? "brightness(80%)" : null};
 
   @media (max-width: 900px) {
     display: none;
