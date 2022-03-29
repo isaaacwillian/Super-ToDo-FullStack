@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Form } from "@unform/web";
 import { FormHandles, SubmitHandler } from "@unform/core";
-import { FiMail, FiLock, FiLogIn } from "react-icons/fi";
+import { FiMail, FiLock, FiLogIn, FiUser } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { Container, Background, Content } from "./style";
 import Input from "../../components/Input";
@@ -18,12 +18,20 @@ function Login() {
 
   return (
     <Container>
+      <Background />
       <Content>
         <Line>
           <Logo />
         </Line>
         <Form ref={formRef} onSubmit={handleFormSubmit}>
-          <h1>Faça seu login</h1>
+          <h1>Faça seu cadastro</h1>
+          <Input
+            name="username"
+            type="text"
+            placeholder="Nome do usuário"
+            Icon={FiUser}
+            required
+          />
           <Input
             name="email"
             type="email"
@@ -38,14 +46,13 @@ function Login() {
             Icon={FiLock}
             required
           />
-          <Button type="submit">Entrar</Button>
+          <Button type="submit">Registrar</Button>
         </Form>
-        <Link to="/register">
+        <Link to="/">
           <FiLogIn />
-          Criar conta
+          Voltar ao login
         </Link>
       </Content>
-      <Background />
     </Container>
   );
 }
