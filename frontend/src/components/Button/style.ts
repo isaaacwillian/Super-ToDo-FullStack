@@ -4,8 +4,16 @@ export const Container = styled.button`
   width: 230px;
   height: 35px;
   border-radius: 10px;
-  border: none;
-  transition: all 0.5s;
+  border: 0;
+  margin-top: 3px;
+  transition: transform 0.2s;
   background-color: ${(props) => props.theme.colors.primary};
   color: ${(props) => props.theme.colors.secondary};
+  border-width: 2px;
+  border-style: solid;
+  border-color: ${(props) => props.theme.colors.background};
+  &:hover {
+    transform: translateY(-3px);
+    border-color: ${(props) => props.theme.colors.primary};
+  }
 `;

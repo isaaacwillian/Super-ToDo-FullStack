@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { shade, lighten } from "polished";
 import todoIcon from "../../assets/todo-login.jpg";
 
 export const Container = styled.div`
@@ -22,15 +23,15 @@ export const Content = styled.div`
   }
 
   form {
+    h1 {
+      text-align: center;
+      margin-bottom: 16px;
+      color: ${(props) => props.theme.colors.text};
+    }
+
     display: flex;
     flex-direction: column;
     gap: 5px;
-  }
-
-  h1 {
-    text-align: center;
-    margin-bottom: 16px;
-    color: ${(props) => props.theme.colors.text};
   }
 
   a {
@@ -43,7 +44,10 @@ export const Content = styled.div`
     }
 
     &:hover {
-      color: #4c3636a4;
+      color: ${(props) =>
+        props.theme.title === "light"
+          ? lighten(0.3, props.theme.colors.primary)
+          : shade(0.2, props.theme.colors.primary)};
     }
   }
 `;
