@@ -5,7 +5,7 @@ export default {
     primary: "#4c3636",
     secondary: "#FFF",
 
-    background: "#e5e5e5",
+    background: "#fff",
     inputBackground: "#fff",
     text: "#000",
     inputPlaceholder: "#757575",
