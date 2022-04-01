@@ -1,13 +1,27 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+interface testProps {
+  hasError: boolean;
+  isFocused: boolean;
+}
+
+export const Container = styled.div<testProps>`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
   background-color: ${(props) => props.theme.colors.inputBackground};
   height: 35px;
-  border: none;
+  border: ${(props) => {
+    if (props.isFocused) {
+      return "2px solid #fcad00";
+    }
+    if (props.hasError) {
+      return "2px solid #fc5454";
+    }
+    return null;
+  }};
+
   border-radius: 8px;
   transition: all 0.5s;
 
@@ -23,6 +37,8 @@ export const Container = styled.div`
   }
 
   svg {
-    color: ${(props) => props.theme.colors.inputPlaceholder};
+    transition: all 0.5s;
+    color: ${(props) =>
+      props.isFocused ? "#fcad00" : props.theme.colors.inputPlaceholder};
   }
 `;

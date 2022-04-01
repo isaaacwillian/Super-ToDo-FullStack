@@ -71,6 +71,9 @@ export const Background = styled.div`
   flex: 1;
   background: url(${todoIcon}) no-repeat center;
   background-size: cover;
+  z-index: -1;
+  filter: ${(props) =>
+    props.theme.title === "dark" ? "brightness(80%)" : null};
 
   @media (max-width: 900px) {
     display: none;

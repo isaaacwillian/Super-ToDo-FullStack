@@ -3,7 +3,7 @@ import { DefaultTheme, ThemeProvider } from "styled-components";
 import { BrowserRouter as Router } from "react-router-dom";
 import light from "./styles/themes/light";
 import dark from "./styles/themes/dark";
-import usePersistedState from "./hooks/usePersistedState";
+import usePersistedState from "./utils/usePersistedState";
 
 import GlobalStyle from "./styles/global";
 import ThemeSwitcher from "./components/ThemeSwitcher";
