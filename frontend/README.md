@@ -18,6 +18,8 @@ Esse projeto está sendo desenvolvido com as seguintes tecnologias:
 
 ✔️Styled-components
 
+✔️Yup
+
 ✔️Unform
 
 ✔️Polished

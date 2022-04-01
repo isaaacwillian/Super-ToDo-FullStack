@@ -3,7 +3,7 @@
 # <p align="center">In Development ⚙️</p>
 
 <div align="center" >
-  <img src="./github/readme.gif" alt="demo-web" height="425">
+  <img src="./github/readme.gif" alt="demo-web" height="600">
 </div>
 
 ---
