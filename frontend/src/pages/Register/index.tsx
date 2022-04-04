@@ -18,14 +18,8 @@ function Login() {
     try {
       const schema = yup.object().shape({
         username: yup.string().required("Nome é obrigatório"),
-        email: yup
-          .string()
-          .email("Digite um email válido")
-          .required("Email é obrigatório"),
-        password: yup
-          .string()
-          .min(6, "Senha mínimo 6 caracteres")
-          .required("Senha é obrigatória"),
+        email: yup.string().email("Digite um email válido").required("Email é obrigatório"),
+        password: yup.string().min(6, "Senha mínimo 6 caracteres").required("Senha é obrigatória"),
       });
 
       await schema.validate(data, { abortEarly: false });
@@ -53,12 +47,7 @@ function Login() {
           <h1>Faça seu cadastro</h1>
           <Input name="username" placeholder="Nome do usuário" Icon={FiUser} />
           <Input name="email" placeholder="E-mail" Icon={FiMail} />
-          <Input
-            name="password"
-            type="password"
-            placeholder="Senha"
-            Icon={FiLock}
-          />
+          <Input name="password" type="password" placeholder="Senha" Icon={FiLock} />
           <Button type="submit">Registrar</Button>
         </Form>
         <Link to="/">

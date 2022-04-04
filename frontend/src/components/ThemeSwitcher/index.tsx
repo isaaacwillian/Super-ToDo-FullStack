@@ -26,13 +26,9 @@ export default function ThemeSwitcher({ toggleTheme }: Props) {
         offColor="#fff"
         offHandleColor="#e1e1e1"
         onHandleColor="#000"
-        uncheckedHandleIcon={
-          <FaSun style={{ color: "black", width: 20, height: 20 }} />
-        }
+        uncheckedHandleIcon={<FaSun style={{ color: "black", width: 20, height: 20 }} />}
         checkedHandleIcon={
-          <BsFillMoonStarsFill
-            style={{ color: "white", width: 14, height: 20 }}
-          />
+          <BsFillMoonStarsFill style={{ color: "white", width: 14, height: 20 }} />
         }
       />
     </Container>

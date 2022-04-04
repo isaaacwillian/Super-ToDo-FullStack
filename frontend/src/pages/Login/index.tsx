@@ -17,11 +17,8 @@ function Login() {
   const handleFormSubmit: SubmitHandler = async (data, { reset }) => {
     try {
       const schema = yup.object().shape({
-        email: yup
-          .string()
-          .email("Digite um email válido")
-          .required("Email é obrigatório"),
-        password: yup.string().min(6, "Senha mínimo 6 caracteres"),
+        email: yup.string().email("Digite um email válido").required("Email é obrigatório"),
+        password: yup.string().min(6, "Senha mínimo 6 caracteres").required("Senha é obrigatória!"),
       });
 
       await schema.validate(data, { abortEarly: false });
@@ -47,12 +44,7 @@ function Login() {
         <Form ref={formRef} onSubmit={handleFormSubmit}>
           <h1>Faça seu login</h1>
           <Input name="email" placeholder="E-mail" Icon={FiMail} />
-          <Input
-            name="password"
-            type="password"
-            placeholder="Senha"
-            Icon={FiLock}
-          />
+          <Input name="password" type="password" placeholder="Senha" Icon={FiLock} />
           <Button type="submit">Entrar</Button>
         </Form>
         <Link to="/register">

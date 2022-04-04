@@ -8,8 +8,8 @@ export default createGlobalStyle`
     outline: 0;
   }
   body {
-    background: ${(props) => props.theme.colors.background};
-    color: ${(props) => props.theme.colors.text};
+    background: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.text};
     -webkit-font-smoothing: antialiased;
     transition: all 0.5s;
   }
