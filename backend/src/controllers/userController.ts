@@ -14,14 +14,9 @@ export const register = (req: Request, res: Response) => {
     password: bcrypt.hashSync(req.body.password),
   });
 
-  user
-    .save()
-    .then(() => {
-      res.send(user);
-    })
-    .catch((err: Error) => {
-      res.status(400).send(err);
-    });
+  user.save().catch((err: Error) => res.status(400).send(err));
+
+  return res.send(user);
 };
 
 export const login = async (req: Request, res: Response) => {
@@ -42,5 +37,5 @@ export const login = async (req: Request, res: Response) => {
     maxAge: 60 * 60 * 24 * 1000,
     httpOnly: true,
   });
-  res.send("User Logged");
+  return res.send("User Logged");
 };

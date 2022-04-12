@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
-import userRouter from "./routes/userRouter";
 import cookieParser from "cookie-parser";
+import userRouter from "./routes/userRouter";
 import dataRouter from "./routes/dataRouter";
 
 const app = express();
