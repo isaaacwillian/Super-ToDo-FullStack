@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "./style";
 
 interface Props {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export default function Line({ children }: Props) {

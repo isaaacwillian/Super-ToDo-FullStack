@@ -6,7 +6,7 @@ export const Container = styled.button`
   border-radius: 10px;
   border: 0;
   margin-top: 3px;
-  transition: transform 0.2s;
+  transition: 0.2s;
   background-color: ${(props) => props.theme.colors.primary};
   color: ${(props) => props.theme.colors.secondary};
   border-width: 2px;
