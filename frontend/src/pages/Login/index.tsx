@@ -4,6 +4,7 @@ import { FormHandles, SubmitHandler } from "@unform/core";
 import { FiMail, FiLock, FiLogIn } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
+import Cookies from "js-cookie";
 import { Container, Background, Content } from "./style";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
@@ -26,7 +27,7 @@ function Login() {
 
       formRef.current?.setErrors({});
 
-      const response = await api.post("/user/login", data);
+      const response = await api.post("/user/login", data, { withCredentials: true });
       console.log(response);
     } catch (err) {
       if (err instanceof yup.ValidationError) {

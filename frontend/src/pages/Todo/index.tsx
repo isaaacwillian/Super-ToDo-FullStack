@@ -19,7 +19,7 @@ function Todo() {
 
   useEffect(() => {
     api
-      .get("/data/get")
+      .get("/data/get", { withCredentials: true })
       .then((res) => {
         console.log(res);
       })

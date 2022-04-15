@@ -10,7 +10,7 @@ Essa é uma API Rest que provê toda a estrutura do banco de dados e da autentic
   <img src="../github/readme.gif" alt="super todo" height="425">
 </div>
 
-## Tecnologias
+## 🚀 Tecnologias
 
 Esse projeto está sendo desenvolvido com as seguintes tecnologias:
 
