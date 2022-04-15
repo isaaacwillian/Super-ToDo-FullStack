@@ -7,26 +7,30 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 10%;
-  padding: 15px 60px;
-  button {
-    width: 70px;
-    &:hover {
-      transform: translateY(0);
-      border-color: ${(props) => props.theme.colors.background};
-      background-color: ${(props) => lighten(0.2, props.theme.colors.primary)};
+  box-shadow: 0px 0px 10px black;
+  position: sticky;
+  #header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 10%;
+    padding: 15px 60px;
+    button {
+      width: 70px;
+      &:hover {
+        transform: translateY(0);
+        border-color: ${(props) => props.theme.colors.background};
+        background-color: ${(props) => lighten(0.2, props.theme.colors.primary)};
+      }
     }
-  }
-  p {
-    font-size: 32px;
-  }
-  #logo {
-    width: 50px;
     p {
-      font-size: 16px;
+      font-size: 32px;
+    }
+    #logo {
+      width: 50px;
+      p {
+        font-size: 16px;
+      }
     }
   }
 `;

@@ -38,7 +38,6 @@ export const Container = styled.div<testProps>`
 
   svg {
     transition: all 0.5s;
-    color: ${(props) =>
-      props.isFocused ? "#fcad00" : props.theme.colors.inputPlaceholder};
+    color: ${(props) => (props.isFocused ? "#fcad00" : props.theme.colors.inputPlaceholder)};
   }
 `;

@@ -10,6 +10,7 @@ import Button from "../../components/Button";
 import Line from "../../components/Line";
 import Logo from "../../components/Logo";
 import getValidationsErrors from "../../utils/getValidationErrors";
+import { api } from "../../services/api";
 
 function Login() {
   const formRef = useRef<FormHandles>(null);
@@ -25,8 +26,8 @@ function Login() {
 
       formRef.current?.setErrors({});
 
-      console.log(data);
-      reset();
+      const response = await api.post("/user/login", data);
+      console.log(response);
     } catch (err) {
       if (err instanceof yup.ValidationError) {
         const errors = getValidationsErrors(err);

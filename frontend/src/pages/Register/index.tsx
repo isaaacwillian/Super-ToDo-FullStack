@@ -10,6 +10,7 @@ import Button from "../../components/Button";
 import Line from "../../components/Line";
 import Logo from "../../components/Logo";
 import getValidationsErrors from "../../utils/getValidationErrors";
+import { api } from "../../services/api";
 
 function Login() {
   const formRef = useRef<FormHandles>(null);
@@ -25,14 +26,18 @@ function Login() {
       await schema.validate(data, { abortEarly: false });
 
       formRef.current?.setErrors({});
-
       console.log(data);
-      reset();
+
+      api
+        .post("/user/register", data)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
     } catch (err) {
       if (err instanceof yup.ValidationError) {
         const errors = getValidationsErrors(err);
         formRef.current?.setErrors(errors);
       }
+      console.log(err);
     }
   };
 
@@ -50,7 +55,7 @@ function Login() {
           <Input name="password" type="password" placeholder="Senha" Icon={FiLock} />
           <Button type="submit">Registrar</Button>
         </Form>
-        <Link to="/">
+        <Link to="/login">
           <FiLogIn />
           Voltar ao login
         </Link>
