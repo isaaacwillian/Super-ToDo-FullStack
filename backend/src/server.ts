@@ -1,11 +1,13 @@
 import express from "express";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import userRouter from "./routes/userRouter";
 import dataRouter from "./routes/dataRouter";
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 

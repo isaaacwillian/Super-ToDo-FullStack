@@ -18,15 +18,15 @@ This project is being developed with the following technologies:
 
 - ✔️ NodeJS
 
-- ✔️ React Hooks
+- ✔️ MongoDB
 
-- ✔️ Context API
+- ✔️ React Hooks
 
 - ✔️ Styled-components
 
 - ✔️ Polished
 
-- ✔️ MongoDB
+- ✔️ Context API
 
 - ✔️ Axios
 

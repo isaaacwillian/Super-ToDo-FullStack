@@ -1,5 +1,11 @@
 <h1 align="center">Super To-Do</h1>
 
+## 💇🏻‍♂️ Sobre o projeto
+
+Essa é uma API Rest que provê toda a estrutura do banco de dados e da autenticação do usuário.
+
+---
+
 <div align="center" >
   <img src="../github/readme.gif" alt="super todo" height="425">
 </div>
@@ -8,33 +14,27 @@
 
 Esse projeto está sendo desenvolvido com as seguintes tecnologias:
 
+✔️Node.js
+
 ✔️Typescript
 
-✔️React
+✔️Express
 
-✔️React Hooks
+✔️MongoDB
 
-✔️Context API
+✔️Bcryptjs
 
-✔️Styled-components
+✔️Jsonwebtoken
 
-✔️React Router Dom
+✔️Joi
 
 ✔️Yup
-
-✔️Unform
-
-✔️Axios
-
-✔️Polished
 
 ✔️Eslint
 
 ✔️Prettier
 
-## 💻 Projeto
-
-Super To-Do é um site web que permite aos usuários guardar uma lista de fazeres.
+✔️EditorConfig
 
 ## ⚙ Configuração
 

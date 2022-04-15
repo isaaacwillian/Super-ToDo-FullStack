@@ -14,7 +14,13 @@ export const register = (req: Request, res: Response) => {
     password: bcrypt.hashSync(req.body.password),
   });
 
-  user.save().catch((err: Error) => res.status(400).send(err));
+  user.save().catch((err: Error) => {
+    try {
+      return res.status(400).send(err);
+    } catch (erro) {
+      return console.log(erro);
+    }
+  });
 
   return res.send(user);
 };
