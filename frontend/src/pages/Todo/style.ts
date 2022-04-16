@@ -38,7 +38,8 @@ export const Header = styled.div`
 export const Content = styled.div`
   margin-top: 50px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   form {
     display: flex;
     width: 900px;

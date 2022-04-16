@@ -20,7 +20,7 @@ export const addTodo = async (req: Request, res: Response) => {
 export const getAllTodo = async (req: Request, res: Response) => {
   try {
     const user = await User.findOne({ _id: req.user._id });
-    res.json(user.todoList);
+    res.json(user);
   } catch (error) {
     res.json(error);
   }

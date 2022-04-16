@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
     maxlength: 100,
     unique: true,
   },
-  password: { type: String, required: true, minlength: 6, maxlength: 200 },
+  password: { type: String, required: true, minlength: 6, maxlength: 200, select: false },
   todoList: { type: Array, default: [] },
   createdAt: { type: Date, default: Date.now },
 });
