@@ -6,6 +6,7 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     outline: 0;
+
   }
   body {
     background: ${(props) => props.theme.colors.background};
@@ -13,7 +14,7 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     transition: all 0.5s;
   }
-  body, input, button {
+  body, input, button, textarea {
     font-family: 'Roboto Slab', serif;
     font-size: 14px;
   }

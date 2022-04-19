@@ -1,13 +1,21 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {
+  ButtonHTMLAttributes,
+  FormEvent,
+  KeyboardEvent,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { SubmitHandler } from "@unform/core";
 import { Form } from "@unform/web";
 import { BsPen } from "react-icons/bs";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { FaRegEdit } from "react-icons/fa";
+import { ImBin } from "react-icons/im";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
-import Line from "../../components/Line";
 import Logo from "../../components/Logo";
-import { Container, Content, Header } from "./style";
+import { Container, Content, Header, TodoList } from "./style";
 import { api } from "../../services/api";
 import { AuthContext } from "../../context/authContext";
 
@@ -55,6 +63,51 @@ function Todo() {
     }
   };
 
+  const updateTodo = async (e: KeyboardEvent) => {
+    const span = e.target as HTMLElement;
+    if (e.key === "Enter") {
+      e.preventDefault();
+      try {
+        await api.put(
+          "data/update",
+          { todoId: span.id, newTodo: span.innerText },
+          { withCredentials: true }
+        );
+        span.removeAttribute("contenteditable");
+        span.classList.remove("updatingTodo");
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const findSpanElement = (e: HTMLElement) => {
+    if (!e.children[0]) {
+      return e.parentElement?.parentElement?.parentElement?.previousSibling;
+    }
+    if (!e.children[0].children[0]) {
+      return e.parentElement?.parentElement?.previousSibling;
+    }
+    return e?.parentElement?.previousSibling;
+  };
+
+  const handleEditClick = (e: FormEvent) => {
+    const span = findSpanElement(e.target as HTMLElement) as HTMLElement;
+    span.setAttribute("contenteditable", "true");
+    span.classList.add("updatingTodo");
+    span.focus();
+  };
+
+  const removeTodo = async (e: FormEvent) => {
+    const span = findSpanElement(e.target as HTMLElement) as HTMLElement;
+    try {
+      await api.delete("data/remove", { withCredentials: true, data: { id: span.id } });
+      getInfos();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getInfos();
   }, []);
@@ -75,7 +128,24 @@ function Todo() {
           <Input name="todo" Icon={BsPen} />
           <Button>Adicionar</Button>
         </Form>
-        {user.todoList && user.todoList.map((todo) => <p key={todo.id}>{todo.todo}</p>)}
+        <TodoList>
+          {user.todoList &&
+            user.todoList.map((todo) => (
+              <div id="todo" key={todo.id}>
+                <span id={todo.id} role="textbox" tabIndex={0} onKeyDown={updateTodo}>
+                  {todo.todo}
+                </span>
+                <div>
+                  <button type="button" onClick={handleEditClick}>
+                    <FaRegEdit size="20px" />
+                  </button>
+                  <button type="button" onClick={removeTodo}>
+                    <ImBin size="20px" />
+                  </button>
+                </div>
+              </div>
+            ))}
+        </TodoList>
       </Content>
     </Container>
   );

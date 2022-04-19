@@ -32,12 +32,16 @@ function Login() {
       await api.post("/user/login", data, { withCredentials: true });
       await getData();
 
-      navigate("/");
+      return navigate("/");
     } catch (err) {
       if (err instanceof yup.ValidationError) {
         const errors = getValidationsErrors(err);
-        formRef.current?.setErrors(errors);
+        return formRef.current?.setErrors(errors);
       }
+      return formRef.current?.setErrors({
+        email: "Email ou senha inválido",
+        password: "Email ou senha inválido",
+      });
     }
   };
 

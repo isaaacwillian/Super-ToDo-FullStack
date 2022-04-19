@@ -16,4 +16,7 @@ export const Container = styled.button`
     transform: translateY(-3px);
     border-color: ${(props) => props.theme.colors.primary};
   }
+  &:active {
+    transform: translateY(-1px);
+  }
 `;
