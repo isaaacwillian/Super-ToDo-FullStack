@@ -7,7 +7,7 @@ export const validateToken = async (req: Request, res: Response, next: NextFunct
   if (!accessToken) return res.status(401).json({ error: "User not authenticated" });
 
   try {
-    const validToken = jwt.verify(accessToken, "jwtsecret");
+    const validToken = jwt.verify(accessToken, process.env.JWT_SECRET as string);
     req.user = validToken;
     const user = await User.findOne({ _id: req.user._id });
     if (!user) return res.status(404).json({ error: "Not found user" });

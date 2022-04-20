@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import { loginValidate, registerValidate } from "./validate";
+import { loginValidate, registerValidate } from "../validations/validate";
 import User from "../models/User";
 
 export const register = async (req: Request, res: Response) => {
@@ -31,7 +31,7 @@ export const login = async (req: Request, res: Response) => {
   const passwordAndUserMatch = bcrypt.compareSync(req.body.password, selectedUser.password);
   if (!passwordAndUserMatch) return res.status(400).send("Email or password is incorrect");
 
-  const accessToken = jwt.sign({ _id: selectedUser._id }, "jwtsecret", {
+  const accessToken = jwt.sign({ _id: selectedUser._id }, process.env.JWT_SECRET as string, {
     expiresIn: "1d",
   });
 
