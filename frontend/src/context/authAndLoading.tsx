@@ -14,35 +14,41 @@ interface dataProps {
 interface AuthContextData {
   auth: boolean;
   getData(): Promise<dataProps>;
+  loading: boolean;
 }
 
 interface Props {
   children: React.ReactNode;
 }
 
-export const AuthContext = createContext<AuthContextData>({} as AuthContextData);
+export const AuthLoadingContext = createContext<AuthContextData>({} as AuthContextData);
 
 export function AuthProvider({ children }: Props) {
   const [auth, setAuth] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const getData = async () => {
     try {
       const res = await api.get("/data/get", { withCredentials: true });
+      setLoading(false);
       if (res.data) {
         setAuth(true);
         return res.data;
       }
+      return null;
     } catch (error) {
-      console.log(error);
+      setLoading(false);
+      return setAuth(false);
     }
-    return setAuth(false);
   };
 
   useEffect(() => {
     getData();
   }, []);
 
-  const authProviderValue = useMemo(() => ({ auth, getData }), [auth, getData]);
+  const authProviderValue = useMemo(() => ({ auth, getData, loading }), [auth, getData, loading]);
 
-  return <AuthContext.Provider value={authProviderValue}>{children}</AuthContext.Provider>;
+  return (
+    <AuthLoadingContext.Provider value={authProviderValue}>{children}</AuthLoadingContext.Provider>
+  );
 }

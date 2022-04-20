@@ -1,11 +1,6 @@
-import React, {
-  ButtonHTMLAttributes,
-  FormEvent,
-  KeyboardEvent,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import React, { FormEvent, KeyboardEvent, useContext, useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { SubmitHandler } from "@unform/core";
 import { Form } from "@unform/web";
 import { BsPen } from "react-icons/bs";
@@ -17,7 +12,7 @@ import Input from "../../components/Input";
 import Logo from "../../components/Logo";
 import { Container, Content, Header, TodoList } from "./style";
 import { api } from "../../services/api";
-import { AuthContext } from "../../context/authContext";
+import { AuthLoadingContext } from "../../context/authAndLoading";
 
 interface todoListProps {
   id: string;
@@ -31,13 +26,24 @@ interface Props {
 function Todo() {
   const [user, setUser] = useState<Props>({} as Props);
   const navigate = useNavigate();
-  const { getData } = useContext(AuthContext);
+  const { getData } = useContext(AuthLoadingContext);
 
   const getInfos = () => {
     getData()
       .then((res) => setUser(res))
       .catch();
   };
+
+  const notify = () =>
+    toast.error("Ocorreu um erro, tente novamente!", {
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
 
   const handleSubmit: SubmitHandler = async (data, { reset }) => {
     if (!data.todo) return null;
@@ -46,7 +52,15 @@ function Todo() {
       await api.post("/data/add", data, { withCredentials: true });
       getInfos();
     } catch (error) {
-      console.log(error);
+      return toast.error("Ocorreu um erro no servidor, tente novamente!", {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
 
     reset();
@@ -59,7 +73,7 @@ function Todo() {
       await getData();
       navigate("/login");
     } catch (error) {
-      console.log(error);
+      notify();
     }
   };
 
@@ -76,7 +90,7 @@ function Todo() {
         span.removeAttribute("contenteditable");
         span.classList.remove("updatingTodo");
       } catch (error) {
-        console.log(error);
+        notify();
       }
     }
   };
@@ -104,7 +118,7 @@ function Todo() {
       await api.delete("data/remove", { withCredentials: true, data: { id: span.id } });
       getInfos();
     } catch (error) {
-      console.log(error);
+      notify();
     }
   };
 
@@ -114,6 +128,7 @@ function Todo() {
 
   return (
     <Container>
+      <ToastContainer />
       <Header>
         <div id="header">
           <Logo />

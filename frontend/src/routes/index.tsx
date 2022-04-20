@@ -4,7 +4,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Todo from "../pages/Todo";
 import { ProtectedCredentials, ProtectedRoute } from "./protection";
-import { AuthProvider } from "../context/authContext";
+import { AuthProvider } from "../context/authAndLoading";
 
 export default function Routes() {
   return (

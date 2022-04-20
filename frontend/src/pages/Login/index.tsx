@@ -4,6 +4,9 @@ import { FormHandles, SubmitHandler } from "@unform/core";
 import { FiMail, FiLock, FiLogIn } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
+import { AxiosError } from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Container, Background, Content } from "./style";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
@@ -11,11 +14,12 @@ import Line from "../../components/Line";
 import Logo from "../../components/Logo";
 import getValidationsErrors from "../../utils/getValidationErrors";
 import { api } from "../../services/api";
-import { AuthContext } from "../../context/authContext";
+import { AuthLoadingContext } from "../../context/authAndLoading";
+import Loader from "../../components/Loader";
 
 function Login() {
   const formRef = useRef<FormHandles>(null);
-  const { getData } = useContext(AuthContext);
+  const { getData, loading } = useContext(AuthLoadingContext);
   const navigate = useNavigate();
 
   const handleFormSubmit: SubmitHandler = async (data) => {
@@ -33,37 +37,53 @@ function Login() {
       await getData();
 
       return navigate("/");
-    } catch (err) {
-      if (err instanceof yup.ValidationError) {
-        const errors = getValidationsErrors(err);
+    } catch (error) {
+      if (error instanceof yup.ValidationError) {
+        const errors = getValidationsErrors(error);
         return formRef.current?.setErrors(errors);
       }
-      return formRef.current?.setErrors({
-        email: "Email ou senha inválido",
-        password: "Email ou senha inválido",
+      const err = error as AxiosError;
+      if (err.response?.data === "Email or password is incorrect") {
+        return formRef.current?.setErrors({ email: "Email ou senha está incorreto" });
+      }
+      return toast.error("Ocorreu um erro, tente novamente!", {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
     }
   };
 
   return (
-    <Container>
-      <Content>
-        <Line>
-          <Logo />
-        </Line>
-        <Form ref={formRef} onSubmit={handleFormSubmit}>
-          <h1>Faça seu login</h1>
-          <Input name="email" placeholder="E-mail" Icon={FiMail} />
-          <Input name="password" type="password" placeholder="Senha" Icon={FiLock} />
-          <Button type="submit">Entrar</Button>
-        </Form>
-        <Link to="/register">
-          <FiLogIn />
-          Criar conta
-        </Link>
-      </Content>
-      <Background />
-    </Container>
+    <div>
+      {!loading ? (
+        <Container>
+          <ToastContainer />
+          <Content>
+            <Line>
+              <Logo />
+            </Line>
+            <Form ref={formRef} onSubmit={handleFormSubmit}>
+              <h1>Faça seu login</h1>
+              <Input name="email" placeholder="E-mail" Icon={FiMail} />
+              <Input name="password" type="password" placeholder="Senha" Icon={FiLock} />
+              <Button type="submit">Entrar</Button>
+            </Form>
+            <Link to="/register">
+              <FiLogIn />
+              Criar conta
+            </Link>
+          </Content>
+          <Background />
+        </Container>
+      ) : (
+        <Loader />
+      )}
+    </div>
   );
 }
 
