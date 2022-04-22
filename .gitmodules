@@ -1,0 +1,6 @@
+[submodule "Super-Todo-BACKEND"]
+	path = Super-Todo-BACKEND
+	url = https://github.com/isaaacwillian/Super-Todo-BACKEND
+[submodule "SuperTodo-FRONTEND"]
+	path = SuperTodo-FRONTEND
+	url = https://github.com/isaaacwillian/SuperTodo-FRONTEND
