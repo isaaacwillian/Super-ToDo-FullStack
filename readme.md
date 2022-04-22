@@ -3,32 +3,38 @@
 # <p align="center">In Development ⚙️</p>
 
 <div align="center" >
-  <img src="./github/readme.gif" alt="demo-web" height="600">
+  <img src="./github/readme1.gif" alt="demo-web" height="425">
+  <img src="./github/readme2.gif" alt="demo-web" height="425">
+  <img src="./github/readme3.gif" alt="demo-mobile" height="425">
 </div>
 
 ---
 
 ## 🚀 Technologies
 
-This project is being developed with the following technologies:
+⚙️ Main technologies that this project was developed:
 
-- ✔️ Typescript
+- ✔️ReactJS
 
-- ✔️ ReactJS
+- ✔️NodeJS
 
-- ✔️ NodeJS
+- ✔️MongoDB
 
-- ✔️ MongoDB
+- ✔️Typescript
 
-- ✔️ React Hooks
+- ✔️Express
 
-- ✔️ Styled-components
+- ✔️Styled-Components
 
-- ✔️ Polished
+- ✔️JWT-token
 
-- ✔️ Context API
+- ✔️BcryptJs
 
-- ✔️ Axios
+- ✔️React Router
+
+- ✔️Eslint
+
+- ✔️Prettier
 
 #
 
